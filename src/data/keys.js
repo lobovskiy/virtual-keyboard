@@ -25,7 +25,7 @@ const keys = [
       default: '1',
       shift: '!',
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -42,7 +42,7 @@ const keys = [
         shift: '"',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -59,7 +59,7 @@ const keys = [
         shift: '№',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -76,7 +76,7 @@ const keys = [
         shift: ';',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -87,7 +87,7 @@ const keys = [
       default: '5',
       shift: '%',
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -104,7 +104,7 @@ const keys = [
         shift: ':',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -121,7 +121,7 @@ const keys = [
         shift: '?',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -132,7 +132,7 @@ const keys = [
       default: '8',
       shift: '*',
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -143,7 +143,7 @@ const keys = [
       default: '9',
       shift: '(',
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -154,7 +154,7 @@ const keys = [
       default: '0',
       shift: ')',
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -165,7 +165,7 @@ const keys = [
       default: '-',
       shift: '_',
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -176,7 +176,7 @@ const keys = [
       default: '=',
       shift: '+',
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 1,
@@ -184,7 +184,7 @@ const keys = [
     code: 'Backspace',
     keyCode: 8,
     value: 'Backspace',
-    classNames: ['key'],
+    classNames: ['key', 'key_backspace'],
   },
   {
     row: 2,
@@ -192,7 +192,7 @@ const keys = [
     code: 'Tab',
     keyCode: 9,
     value: 'Tab',
-    classNames: ['key'],
+    classNames: ['key', 'key_tab'],
   },
   {
     row: 2,
@@ -209,7 +209,7 @@ const keys = [
         shift: 'Й',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -226,7 +226,7 @@ const keys = [
         shift: 'Ц',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -243,7 +243,7 @@ const keys = [
         shift: 'У',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -260,7 +260,7 @@ const keys = [
         shift: 'К',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -277,7 +277,7 @@ const keys = [
         shift: 'Е',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -294,7 +294,7 @@ const keys = [
         shift: 'Н',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -311,7 +311,7 @@ const keys = [
         shift: 'Г',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -328,7 +328,7 @@ const keys = [
         shift: 'Ш',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -345,7 +345,7 @@ const keys = [
         shift: 'Щ',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -362,7 +362,7 @@ const keys = [
         shift: 'З',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -379,7 +379,7 @@ const keys = [
         shift: 'Х',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -396,7 +396,7 @@ const keys = [
         shift: 'Ъ',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 2,
@@ -413,6 +413,14 @@ const keys = [
         shift: '/',
       },
     },
+    classNames: ['key', 'key_symbol'],
+  },
+  {
+    row: 2,
+    position: 15,
+    code: 'Delete',
+    keyCode: 46,
+    value: 'Del',
     classNames: ['key'],
   },
   {
@@ -420,8 +428,8 @@ const keys = [
     position: 1,
     code: 'CapsLock',
     keyCode: 20,
-    value: 'Caps Lock',
-    classNames: ['key'],
+    value: 'Caps<br>Lock',
+    classNames: ['key', 'key_caps-lock'],
   },
   {
     row: 3,
@@ -438,7 +446,7 @@ const keys = [
         shift: 'Ф',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -455,7 +463,7 @@ const keys = [
         shift: 'Ы',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -472,7 +480,7 @@ const keys = [
         shift: 'В',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -489,7 +497,7 @@ const keys = [
         shift: 'А',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -506,7 +514,7 @@ const keys = [
         shift: 'П',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -523,7 +531,7 @@ const keys = [
         shift: 'Р',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -540,7 +548,7 @@ const keys = [
         shift: 'О',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -557,7 +565,7 @@ const keys = [
         shift: 'Л',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -574,7 +582,7 @@ const keys = [
         shift: 'Д',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -591,7 +599,7 @@ const keys = [
         shift: 'Ж',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -608,7 +616,7 @@ const keys = [
         shift: 'Э',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 3,
@@ -616,7 +624,7 @@ const keys = [
     code: 'Enter',
     keyCode: 13,
     value: 'Enter',
-    classNames: ['key'],
+    classNames: ['key', 'key_enter'],
   },
   {
     row: 4,
@@ -624,7 +632,7 @@ const keys = [
     code: 'ShiftLeft',
     keyCode: 16,
     value: 'Shift',
-    classNames: ['key'],
+    classNames: ['key', 'key_shift-left'],
   },
   {
     row: 4,
@@ -641,7 +649,7 @@ const keys = [
         shift: 'Я',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
@@ -658,7 +666,7 @@ const keys = [
         shift: 'Ч',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
@@ -675,7 +683,7 @@ const keys = [
         shift: 'С',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
@@ -692,7 +700,7 @@ const keys = [
         shift: 'М',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
@@ -709,7 +717,7 @@ const keys = [
         shift: 'И',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
@@ -726,7 +734,7 @@ const keys = [
         shift: 'Т',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
@@ -743,7 +751,7 @@ const keys = [
         shift: 'Ь',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
@@ -760,7 +768,7 @@ const keys = [
         shift: 'Б',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
@@ -777,7 +785,7 @@ const keys = [
         shift: 'Ю',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
@@ -794,22 +802,22 @@ const keys = [
         shift: ',',
       },
     },
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol'],
   },
   {
     row: 4,
     position: 12,
-    code: 'ArrowUp',
-    keyCode: 38,
-    value: '⬆',
-    classNames: ['key'],
+    code: 'ShiftRight',
+    keyCode: 16,
+    value: 'Shift',
+    classNames: ['key', 'key_shift-right'],
   },
   {
     row: 4,
     position: 13,
-    code: 'ShiftRight',
-    keyCode: 16,
-    value: 'Shift',
+    code: 'ArrowUp',
+    keyCode: 38,
+    value: '⬆',
     classNames: ['key'],
   },
   {
@@ -818,7 +826,7 @@ const keys = [
     code: 'ControlLeft',
     keyCode: 17,
     value: 'Ctrl',
-    classNames: ['key'],
+    classNames: ['key', 'key_ctrl'],
   },
   {
     row: 5,
@@ -826,7 +834,7 @@ const keys = [
     code: 'MetaLeft',
     keyCode: 91,
     value: 'Win',
-    classNames: ['key'],
+    classNames: ['key', 'key_win'],
   },
   {
     row: 5,
@@ -834,7 +842,7 @@ const keys = [
     code: 'AltLeft',
     keyCode: 18,
     value: 'Alt',
-    classNames: ['key'],
+    classNames: ['key', 'key_alt'],
   },
   {
     row: 5,
@@ -842,7 +850,7 @@ const keys = [
     code: 'Space',
     keyCode: 32,
     value: '',
-    classNames: ['key'],
+    classNames: ['key', 'key_symbol', 'key_space'],
   },
   {
     row: 5,
@@ -850,7 +858,7 @@ const keys = [
     code: 'AltRight',
     keyCode: 18,
     value: 'Alt',
-    classNames: ['key'],
+    classNames: ['key', 'key_alt'],
   },
   {
     row: 5,
@@ -858,7 +866,7 @@ const keys = [
     code: 'ControlRight',
     keyCode: 17,
     value: 'Ctrl',
-    classNames: ['key'],
+    classNames: ['key', 'key_ctrl'],
   },
   {
     row: 5,

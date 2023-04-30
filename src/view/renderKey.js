@@ -1,6 +1,8 @@
 function renderKey(key) {
   const keyElement = document.createElement('div');
-  keyElement.classList.add(key.classNames);
+  key.classNames.forEach((className) => {
+    keyElement.classList.add(className);
+  });
   keyElement.innerHTML = key.label;
 
   return keyElement;
