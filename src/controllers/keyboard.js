@@ -53,6 +53,14 @@ class Keyboard {
 
     return rowKeys;
   }
+
+  pressKey(key) {
+    this[key].DOMElement.setAttribute('data-pressed', '');
+  }
+
+  releaseKey(key) {
+    this[key].DOMElement.removeAttribute('data-pressed');
+  }
 }
 
 const keyboard = new Keyboard(keys);

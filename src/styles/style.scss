@@ -90,4 +90,8 @@ body {
   &_space {
     width: 300px;
   }
+
+  &[data-pressed] {
+    background-color: red;
+  }
 }
