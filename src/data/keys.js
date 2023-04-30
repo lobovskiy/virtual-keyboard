@@ -405,12 +405,12 @@ const keys = [
     keyCode: 220,
     value: {
       en: {
-        default: ']',
-        shift: '}',
+        default: '\\',
+        shift: '|',
       },
       ru: {
-        default: 'ъ',
-        shift: 'Ъ',
+        default: '\\',
+        shift: '/',
       },
     },
     classNames: ['key'],
