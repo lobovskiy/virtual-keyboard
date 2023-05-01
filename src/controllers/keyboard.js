@@ -34,26 +34,24 @@ class Keyboard {
     const language = getLanguage();
     let label = '';
 
+    const isUppercase =
+      (!key.isLetter && this.pressedControls.shift) ||
+      (key.isLetter && (this.pressedControls.shift || this.upperCase));
+
     if (typeof value === 'string') {
       label = value;
     } else if (
       typeof value === 'object' &&
       Object.prototype.hasOwnProperty.call(value, 'default')
     ) {
-      label =
-        (this.pressedControls.shift && !this.upperCase) ||
-        (!this.pressedControls.shift && this.upperCase)
-          ? value.shift || value.default
-          : value.default;
+      label = isUppercase ? value.shift || value.default : value.default;
     } else if (
       typeof value === 'object' &&
       Object.prototype.hasOwnProperty.call(value, language)
     ) {
-      label =
-        (this.pressedControls.shift && !this.upperCase) ||
-        (!this.pressedControls.shift && this.upperCase)
-          ? value[language].shift || value[language].default
-          : value[language].default;
+      label = isUppercase
+        ? value[language].shift || value[language].default
+        : value[language].default;
     }
 
     return label;
@@ -102,11 +100,26 @@ class Keyboard {
     });
   }
 
+  updateLetters() {
+    const letterKeys = this.letters;
+
+    letterKeys.forEach((key) => {
+      const label = this.getKeyLabel(key);
+
+      // eslint-disable-next-line no-param-reassign
+      key.DOMElement.innerHTML = label;
+    });
+  }
+
   setShiftPressed(value) {
     this.pressedControls = {
       ...this.pressedControls,
       shift: value,
     };
+  }
+
+  setUppercase() {
+    this.upperCase = !this.upperCase;
   }
 
   updatePressedControls(key, value = false) {
@@ -115,6 +128,11 @@ class Keyboard {
     if (code === 'ShiftLeft' || code === 'ShiftRight') {
       this.setShiftPressed(value);
       this.updateSymbols();
+    }
+
+    if (code === 'CapsLock' && value) {
+      this.setUppercase();
+      this.updateLetters();
     }
   }
 
@@ -142,6 +160,14 @@ class Keyboard {
       .map((key) => this[key]);
 
     return symbolKeysArr;
+  }
+
+  get letters() {
+    const letterKeysArr = Object.keys(this)
+      .filter((key) => this[key].isLetter)
+      .map((key) => this[key]);
+
+    return letterKeysArr;
   }
 }
 
