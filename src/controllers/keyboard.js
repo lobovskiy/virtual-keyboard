@@ -15,16 +15,12 @@ class Keyboard {
       this[key.code].soundReleaseButton = new Audio(soundReleaseButton);
 
       const keyElement = renderKey(key);
-      keyElement.addEventListener('mousedown', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.pressKey(key.code);
-      });
-      keyElement.addEventListener('mouseup', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        this.releaseKey(key.code);
-      });
+      keyElement.addEventListener('mousedown', (e) =>
+        this.pressMouseOnKey(e, key),
+      );
+      keyElement.addEventListener('mouseup', (e) =>
+        this.releaseMouseFromKey(e, key),
+      );
       this[key.code].DOMElement = keyElement;
     });
   }
@@ -49,6 +45,18 @@ class Keyboard {
     }
 
     return label;
+  }
+
+  pressMouseOnKey(event, key) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.pressKey(key.code);
+  }
+
+  releaseMouseFromKey(event, key) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.releaseKey(key.code);
   }
 
   getRow(number) {
