@@ -3,6 +3,9 @@ function renderKey(key) {
   key.classNames.forEach((className) => {
     keyElement.classList.add(className);
   });
+  if (key.isSymbol) {
+    keyElement.classList.add('key_symbol');
+  }
   keyElement.innerHTML = key.label;
 
   keyElement.addEventListener('mousedown', (e) => {
