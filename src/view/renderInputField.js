@@ -121,7 +121,7 @@ function moveCursorOnPreviousLine() {
   const previousLinebreakIndex = previousLines.lastIndexOf('\n');
   const previousLineStart =
     previousLinebreakIndex < 0 ? 0 : previousLinebreakIndex + 1;
-  const previousLineLength = lastLinebreakIndex - previousLinebreakIndex;
+  const previousLineLength = lastLinebreakIndex - previousLinebreakIndex - 1;
   const currentCursorPositionInLine = getCursorPositionInLine();
   const newCursorIndex =
     currentCursorPositionInLine > previousLineLength
