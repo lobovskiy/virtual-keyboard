@@ -6,15 +6,19 @@ import soundReleaseButton from '../assets/sound/release-button.mp3';
 
 class Keyboard {
   constructor(keysArray = []) {
+    this.upperCase = false;
+    this.pressedControls = {
+      shift: false,
+      alt: false,
+    };
+
     keysArray.forEach((key) => {
       this[key.code] = key;
-
-      this[key.code].label = Keyboard.getKeyLabel(key);
 
       this[key.code].soundPressButton = new Audio(soundPressButton);
       this[key.code].soundReleaseButton = new Audio(soundReleaseButton);
 
-      const keyElement = renderKey(key);
+      const keyElement = renderKey(key, this.getKeyLabel(key));
       keyElement.addEventListener('mousedown', (e) =>
         this.pressMouseOnKey(e, key),
       );
@@ -25,7 +29,7 @@ class Keyboard {
     });
   }
 
-  static getKeyLabel(key) {
+  getKeyLabel(key) {
     const { value } = key;
     const language = getLanguage();
     let label = '';
@@ -36,12 +40,20 @@ class Keyboard {
       typeof value === 'object' &&
       Object.prototype.hasOwnProperty.call(value, 'default')
     ) {
-      label = value.default;
+      label =
+        (this.pressedControls.shift && !this.upperCase) ||
+        (!this.pressedControls.shift && this.upperCase)
+          ? value.shift || value.default
+          : value.default;
     } else if (
       typeof value === 'object' &&
       Object.prototype.hasOwnProperty.call(value, language)
     ) {
-      label = value[language].default;
+      label =
+        (this.pressedControls.shift && !this.upperCase) ||
+        (!this.pressedControls.shift && this.upperCase)
+          ? value[language].shift || value[language].default
+          : value[language].default;
     }
 
     return label;
@@ -57,6 +69,53 @@ class Keyboard {
     event.preventDefault();
     event.stopPropagation();
     this.releaseKey(key.code);
+  }
+
+  pressKey(key) {
+    this[key].soundPressButton.pause();
+    this[key].soundPressButton.play();
+    this[key].DOMElement.setAttribute('data-pressed', '');
+
+    if (!this[key].isSymbol) {
+      this.updatePressedControls(this[key], true);
+    }
+  }
+
+  releaseKey(key) {
+    this[key].soundReleaseButton.pause();
+    this[key].soundReleaseButton.play();
+    this[key].DOMElement.removeAttribute('data-pressed');
+
+    if (!this[key].isSymbol) {
+      this.updatePressedControls(this[key]);
+    }
+  }
+
+  updateSymbols() {
+    const symbolKeys = this.symbols;
+
+    symbolKeys.forEach((key) => {
+      const label = this.getKeyLabel(key);
+
+      // eslint-disable-next-line no-param-reassign
+      key.DOMElement.innerHTML = label;
+    });
+  }
+
+  setShiftPressed(value) {
+    this.pressedControls = {
+      ...this.pressedControls,
+      shift: value,
+    };
+  }
+
+  updatePressedControls(key, value = false) {
+    const { code } = key;
+
+    if (code === 'ShiftLeft' || code === 'ShiftRight') {
+      this.setShiftPressed(value);
+      this.updateSymbols();
+    }
   }
 
   getRow(number) {
@@ -77,16 +136,12 @@ class Keyboard {
     return rowKeys;
   }
 
-  pressKey(key) {
-    this[key].soundPressButton.pause();
-    this[key].soundPressButton.play();
-    this[key].DOMElement.setAttribute('data-pressed', '');
-  }
+  get symbols() {
+    const symbolKeysArr = Object.keys(this)
+      .filter((key) => this[key].isSymbol)
+      .map((key) => this[key]);
 
-  releaseKey(key) {
-    this[key].soundReleaseButton.pause();
-    this[key].soundReleaseButton.play();
-    this[key].DOMElement.removeAttribute('data-pressed');
+    return symbolKeysArr;
   }
 }
 

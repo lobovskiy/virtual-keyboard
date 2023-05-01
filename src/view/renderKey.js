@@ -1,4 +1,4 @@
-function renderKey(key) {
+function renderKey(key, label) {
   const keyElement = document.createElement('div');
   key.classNames.forEach((className) => {
     keyElement.classList.add(className);
@@ -6,7 +6,7 @@ function renderKey(key) {
   if (key.isSymbol) {
     keyElement.classList.add('key_symbol');
   }
-  keyElement.innerHTML = key.label;
+  keyElement.innerHTML = label;
 
   keyElement.addEventListener('mousedown', (e) => {
     e.preventDefault();
