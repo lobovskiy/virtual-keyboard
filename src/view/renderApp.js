@@ -1,11 +1,15 @@
 import getKeyboard from '../controllers/keyboard';
+import renderTitle from './renderTitle';
 import renderInputField from './renderInputField';
 import renderKeyboard from './renderKeyboard';
+import renderSubtitle from './renderSubtitle';
 
 function renderApp() {
   const body = document.querySelector('body');
 
+  renderTitle(body);
   renderInputField(body);
+  renderSubtitle(body);
   renderKeyboard(body);
 
   const keyboard = getKeyboard();
