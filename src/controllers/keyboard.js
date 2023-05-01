@@ -4,7 +4,8 @@ import renderKey from '../view/renderKey';
 import soundPressButton from '../assets/sound/press-button.mp3';
 import soundReleaseButton from '../assets/sound/release-button.mp3';
 import {
-  REMOVE_DIRECTIONS,
+  TEXTAREA_DIRECTIONS,
+  moveCursor,
   removeSymbol,
   typeSymbol,
 } from '../view/renderInputField';
@@ -162,7 +163,7 @@ class Keyboard {
 
     if (code === 'Enter' && pressed) {
       if (!physicalKeyboardEvent) {
-        typeSymbol('\r\n');
+        typeSymbol('\n');
       }
     }
 
@@ -172,13 +173,37 @@ class Keyboard {
 
     if (code === 'Backspace' && pressed) {
       if (!physicalKeyboardEvent) {
-        removeSymbol(REMOVE_DIRECTIONS.LEFT);
+        removeSymbol(TEXTAREA_DIRECTIONS.LEFT);
       }
     }
 
     if (code === 'Delete' && pressed) {
       if (!physicalKeyboardEvent) {
-        removeSymbol(REMOVE_DIRECTIONS.RIGHT);
+        removeSymbol(TEXTAREA_DIRECTIONS.RIGHT);
+      }
+    }
+
+    if (code === 'ArrowLeft' && pressed) {
+      if (!physicalKeyboardEvent) {
+        moveCursor(TEXTAREA_DIRECTIONS.LEFT);
+      }
+    }
+
+    if (code === 'ArrowRight' && pressed) {
+      if (!physicalKeyboardEvent) {
+        moveCursor(TEXTAREA_DIRECTIONS.RIGHT);
+      }
+    }
+
+    if (code === 'ArrowUp' && pressed) {
+      if (!physicalKeyboardEvent) {
+        moveCursor(TEXTAREA_DIRECTIONS.UP);
+      }
+    }
+
+    if (code === 'ArrowDown' && pressed) {
+      if (!physicalKeyboardEvent) {
+        moveCursor(TEXTAREA_DIRECTIONS.DOWN);
       }
     }
   }
