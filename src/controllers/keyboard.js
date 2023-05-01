@@ -3,13 +3,18 @@ import { getLanguage } from './language';
 import renderKey from '../view/renderKey';
 import soundPressButton from '../assets/sound/press-button.mp3';
 import soundReleaseButton from '../assets/sound/release-button.mp3';
-import { typeSymbol } from '../view/renderInputField';
+import {
+  REMOVE_DIRECTIONS,
+  removeSymbol,
+  typeSymbol,
+} from '../view/renderInputField';
 
 class Keyboard {
   constructor(keysArray = []) {
     this.upperCase = false;
     this.pressedControls = {
       shift: false,
+      ctrl: false,
       alt: false,
     };
 
@@ -75,7 +80,7 @@ class Keyboard {
     this[key].soundPressButton.play();
     this[key].DOMElement.setAttribute('data-pressed', '');
 
-    if (this[key].isSymbol) {
+    if (this[key].isSymbol && !this.pressedControls.ctrl) {
       if (physicalKeyboardEvent) {
         physicalKeyboardEvent.preventDefault();
       }
@@ -84,7 +89,7 @@ class Keyboard {
 
       typeSymbol(symbol);
     } else {
-      this.updatePressedControls(this[key], true);
+      this.checkControls(this[key], physicalKeyboardEvent, true);
     }
   }
 
@@ -94,7 +99,7 @@ class Keyboard {
     this[key].DOMElement.removeAttribute('data-pressed');
 
     if (!this[key].isSymbol) {
-      this.updatePressedControls(this[key]);
+      this.checkControls(this[key]);
     }
   }
 
@@ -127,29 +132,54 @@ class Keyboard {
     };
   }
 
+  setCtrlPressed(value) {
+    this.pressedControls = {
+      ...this.pressedControls,
+      ctrl: value,
+    };
+  }
+
   setUppercase() {
     this.upperCase = !this.upperCase;
   }
 
-  updatePressedControls(key, value = false) {
+  checkControls(key, physicalKeyboardEvent, pressed = false) {
     const { code } = key;
 
     if (code === 'ShiftLeft' || code === 'ShiftRight') {
-      this.setShiftPressed(value);
+      this.setShiftPressed(pressed);
       this.updateSymbols();
     }
 
-    if (code === 'CapsLock' && value) {
+    if (code === 'ControlLeft' || code === 'ControlRight') {
+      this.setCtrlPressed(pressed);
+    }
+
+    if (code === 'CapsLock' && pressed) {
       this.setUppercase();
       this.updateLetters();
     }
 
-    if (code === 'Enter' && value) {
-      typeSymbol('\r\n');
+    if (code === 'Enter' && pressed) {
+      if (!physicalKeyboardEvent) {
+        typeSymbol('\r\n');
+      }
     }
 
-    if (code === 'Tab' && value) {
+    if (code === 'Tab' && pressed) {
       typeSymbol('\t');
+    }
+
+    if (code === 'Backspace' && pressed) {
+      if (!physicalKeyboardEvent) {
+        removeSymbol(REMOVE_DIRECTIONS.LEFT);
+      }
+    }
+
+    if (code === 'Delete' && pressed) {
+      if (!physicalKeyboardEvent) {
+        removeSymbol(REMOVE_DIRECTIONS.RIGHT);
+      }
     }
   }
 
