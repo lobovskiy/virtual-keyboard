@@ -1,6 +1,8 @@
 import keys from '../data/keys';
 import { getLanguage } from './language';
 import renderKey from '../view/renderKey';
+import soundPressButton from '../assets/sound/press-button.mp3';
+import soundReleaseButton from '../assets/sound/release-button.mp3';
 
 class Keyboard {
   constructor(keysArray = []) {
@@ -8,6 +10,9 @@ class Keyboard {
       this[key.code] = key;
 
       this[key.code].label = Keyboard.getKeyLabel(key);
+
+      this[key.code].soundPressButton = new Audio(soundPressButton);
+      this[key.code].soundReleaseButton = new Audio(soundReleaseButton);
 
       const keyElement = renderKey(key);
       this[key.code].DOMElement = keyElement;
@@ -55,10 +60,14 @@ class Keyboard {
   }
 
   pressKey(key) {
+    this[key].soundPressButton.pause();
+    this[key].soundPressButton.play();
     this[key].DOMElement.setAttribute('data-pressed', '');
   }
 
   releaseKey(key) {
+    this[key].soundReleaseButton.pause();
+    this[key].soundReleaseButton.play();
     this[key].DOMElement.removeAttribute('data-pressed');
   }
 }
