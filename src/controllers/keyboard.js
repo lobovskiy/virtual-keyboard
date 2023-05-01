@@ -15,6 +15,16 @@ class Keyboard {
       this[key.code].soundReleaseButton = new Audio(soundReleaseButton);
 
       const keyElement = renderKey(key);
+      keyElement.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.pressKey(key.code);
+      });
+      keyElement.addEventListener('mouseup', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.releaseKey(key.code);
+      });
       this[key.code].DOMElement = keyElement;
     });
   }

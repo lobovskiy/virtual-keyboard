@@ -1,3 +1,5 @@
+let inputField;
+
 function renderInputField(container) {
   const inputDiv = document.createElement('div');
   inputDiv.classList.add('input-field');
@@ -20,8 +22,14 @@ function renderInputField(container) {
 
   textarea.addEventListener('blur', preventFocusLoss);
 
+  inputField = textarea;
   inputDiv.append(textarea);
   container.append(inputDiv);
 }
 
+function getInputField() {
+  return inputField;
+}
+
 export default renderInputField;
+export { getInputField };

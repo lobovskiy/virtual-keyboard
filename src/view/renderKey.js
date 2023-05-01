@@ -5,6 +5,15 @@ function renderKey(key) {
   });
   keyElement.innerHTML = key.label;
 
+  keyElement.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+  keyElement.addEventListener('mouseup', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
   return keyElement;
 }
 

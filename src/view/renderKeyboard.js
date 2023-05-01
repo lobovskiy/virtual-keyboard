@@ -1,5 +1,4 @@
 import getKeyboard from '../controllers/keyboard';
-import { pressKey, releaseKey } from '../controllers/keys';
 
 function renderKeyboard(container) {
   const keyboard = getKeyboard();
@@ -20,16 +19,6 @@ function renderKeyboard(container) {
     );
 
     currentRowKeysSortedArr.forEach((key) => {
-      key.DOMElement.addEventListener('mousedown', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        pressKey(key.code);
-      });
-      key.DOMElement.addEventListener('mouseup', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        releaseKey(key.code);
-      });
       row.append(key.DOMElement);
     });
 
