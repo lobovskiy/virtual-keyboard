@@ -5,6 +5,7 @@ const keys = [
     code: 'Backquote',
     keyCode: 192,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '`',
@@ -23,6 +24,7 @@ const keys = [
     code: 'Digit1',
     keyCode: 49,
     isSymbol: true,
+    isLetter: false,
     value: {
       default: '1',
       shift: '!',
@@ -35,6 +37,7 @@ const keys = [
     code: 'Digit2',
     keyCode: 50,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '2',
@@ -53,6 +56,7 @@ const keys = [
     code: 'Digit3',
     keyCode: 51,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '3',
@@ -71,6 +75,7 @@ const keys = [
     code: 'Digit4',
     keyCode: 52,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '4',
@@ -89,6 +94,7 @@ const keys = [
     code: 'Digit5',
     keyCode: 53,
     isSymbol: true,
+    isLetter: false,
     value: {
       default: '5',
       shift: '%',
@@ -101,6 +107,7 @@ const keys = [
     code: 'Digit6',
     keyCode: 54,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '6',
@@ -119,6 +126,7 @@ const keys = [
     code: 'Digit7',
     keyCode: 55,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '7',
@@ -137,6 +145,7 @@ const keys = [
     code: 'Digit8',
     keyCode: 56,
     isSymbol: true,
+    isLetter: false,
     value: {
       default: '8',
       shift: '*',
@@ -149,6 +158,7 @@ const keys = [
     code: 'Digit9',
     keyCode: 57,
     isSymbol: true,
+    isLetter: false,
     value: {
       default: '9',
       shift: '(',
@@ -161,6 +171,7 @@ const keys = [
     code: 'Digit0',
     keyCode: 48,
     isSymbol: true,
+    isLetter: false,
     value: {
       default: '0',
       shift: ')',
@@ -173,6 +184,7 @@ const keys = [
     code: 'Minus',
     keyCode: 189,
     isSymbol: true,
+    isLetter: false,
     value: {
       default: '-',
       shift: '_',
@@ -185,6 +197,7 @@ const keys = [
     code: 'Equal',
     keyCode: 187,
     isSymbol: true,
+    isLetter: false,
     value: {
       default: '=',
       shift: '+',
@@ -197,6 +210,7 @@ const keys = [
     code: 'Backspace',
     keyCode: 8,
     isSymbol: false,
+    isLetter: false,
     value: 'Backspace',
     classNames: ['key', 'key_backspace'],
   },
@@ -206,6 +220,7 @@ const keys = [
     code: 'Tab',
     keyCode: 9,
     isSymbol: false,
+    isLetter: false,
     value: 'Tab',
     classNames: ['key', 'key_tab'],
   },
@@ -215,6 +230,7 @@ const keys = [
     code: 'KeyQ',
     keyCode: 81,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'q',
@@ -233,6 +249,7 @@ const keys = [
     code: 'KeyW',
     keyCode: 87,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'w',
@@ -251,6 +268,7 @@ const keys = [
     code: 'KeyE',
     keyCode: 69,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'e',
@@ -269,6 +287,7 @@ const keys = [
     code: 'KeyR',
     keyCode: 82,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'r',
@@ -287,6 +306,7 @@ const keys = [
     code: 'KeyT',
     keyCode: 84,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 't',
@@ -305,6 +325,7 @@ const keys = [
     code: 'KeyY',
     keyCode: 89,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'y',
@@ -323,6 +344,7 @@ const keys = [
     code: 'KeyU',
     keyCode: 85,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'u',
@@ -341,6 +363,7 @@ const keys = [
     code: 'KeyI',
     keyCode: 73,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'i',
@@ -359,6 +382,7 @@ const keys = [
     code: 'KeyO',
     keyCode: 79,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'o',
@@ -377,6 +401,7 @@ const keys = [
     code: 'KeyP',
     keyCode: 80,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'p',
@@ -395,6 +420,7 @@ const keys = [
     code: 'BracketLeft',
     keyCode: 219,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '[',
@@ -413,6 +439,7 @@ const keys = [
     code: 'BracketRight',
     keyCode: 221,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: ']',
@@ -431,6 +458,7 @@ const keys = [
     code: 'Backslash',
     keyCode: 220,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '\\',
@@ -449,6 +477,7 @@ const keys = [
     code: 'Delete',
     keyCode: 46,
     isSymbol: false,
+    isLetter: false,
     value: 'Del',
     classNames: ['key'],
   },
@@ -458,6 +487,7 @@ const keys = [
     code: 'CapsLock',
     keyCode: 20,
     isSymbol: false,
+    isLetter: false,
     value: 'Caps<br>Lock',
     classNames: ['key', 'key_caps-lock'],
   },
@@ -467,6 +497,7 @@ const keys = [
     code: 'KeyA',
     keyCode: 65,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'a',
@@ -485,6 +516,7 @@ const keys = [
     code: 'KeyS',
     keyCode: 83,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 's',
@@ -503,6 +535,7 @@ const keys = [
     code: 'KeyD',
     keyCode: 68,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'd',
@@ -521,6 +554,7 @@ const keys = [
     code: 'KeyF',
     keyCode: 70,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'f',
@@ -539,6 +573,7 @@ const keys = [
     code: 'KeyG',
     keyCode: 71,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'g',
@@ -557,6 +592,7 @@ const keys = [
     code: 'KeyH',
     keyCode: 72,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'h',
@@ -575,6 +611,7 @@ const keys = [
     code: 'KeyJ',
     keyCode: 74,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'j',
@@ -593,6 +630,7 @@ const keys = [
     code: 'KeyK',
     keyCode: 75,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'k',
@@ -611,6 +649,7 @@ const keys = [
     code: 'KeyL',
     keyCode: 76,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'l',
@@ -629,6 +668,7 @@ const keys = [
     code: 'Semicolon',
     keyCode: 186,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: ';',
@@ -647,6 +687,7 @@ const keys = [
     code: 'Quote',
     keyCode: 222,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: "'",
@@ -665,6 +706,7 @@ const keys = [
     code: 'Enter',
     keyCode: 13,
     isSymbol: false,
+    isLetter: false,
     value: 'Enter',
     classNames: ['key', 'key_enter'],
   },
@@ -674,6 +716,7 @@ const keys = [
     code: 'ShiftLeft',
     keyCode: 16,
     isSymbol: false,
+    isLetter: false,
     value: 'Shift',
     classNames: ['key', 'key_shift-left'],
   },
@@ -683,6 +726,7 @@ const keys = [
     code: 'KeyZ',
     keyCode: 90,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'z',
@@ -701,6 +745,7 @@ const keys = [
     code: 'KeyX',
     keyCode: 88,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'x',
@@ -719,6 +764,7 @@ const keys = [
     code: 'KeyC',
     keyCode: 67,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'c',
@@ -737,6 +783,7 @@ const keys = [
     code: 'KeyV',
     keyCode: 86,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'v',
@@ -755,6 +802,7 @@ const keys = [
     code: 'KeyB',
     keyCode: 66,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'b',
@@ -773,6 +821,7 @@ const keys = [
     code: 'KeyN',
     keyCode: 78,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'n',
@@ -791,6 +840,7 @@ const keys = [
     code: 'KeyM',
     keyCode: 77,
     isSymbol: true,
+    isLetter: true,
     value: {
       en: {
         default: 'm',
@@ -809,6 +859,7 @@ const keys = [
     code: 'Comma',
     keyCode: 188,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: ',',
@@ -827,6 +878,7 @@ const keys = [
     code: 'Period',
     keyCode: 190,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '.',
@@ -845,6 +897,7 @@ const keys = [
     code: 'Slash',
     keyCode: 191,
     isSymbol: true,
+    isLetter: false,
     value: {
       en: {
         default: '/',
@@ -863,6 +916,7 @@ const keys = [
     code: 'ShiftRight',
     keyCode: 16,
     isSymbol: false,
+    isLetter: false,
     value: 'Shift',
     classNames: ['key', 'key_shift-right'],
   },
@@ -872,6 +926,7 @@ const keys = [
     code: 'ArrowUp',
     keyCode: 38,
     isSymbol: false,
+    isLetter: false,
     value: '⬆',
     classNames: ['key'],
   },
@@ -881,6 +936,7 @@ const keys = [
     code: 'ControlLeft',
     keyCode: 17,
     isSymbol: false,
+    isLetter: false,
     value: 'Ctrl',
     classNames: ['key', 'key_ctrl'],
   },
@@ -890,6 +946,7 @@ const keys = [
     code: 'MetaLeft',
     keyCode: 91,
     isSymbol: false,
+    isLetter: false,
     value: 'Win',
     classNames: ['key', 'key_win'],
   },
@@ -899,6 +956,7 @@ const keys = [
     code: 'AltLeft',
     keyCode: 18,
     isSymbol: false,
+    isLetter: false,
     value: 'Alt',
     classNames: ['key', 'key_alt'],
   },
@@ -908,6 +966,7 @@ const keys = [
     code: 'Space',
     keyCode: 32,
     isSymbol: true,
+    isLetter: false,
     value: '',
     classNames: ['key', 'key_space'],
   },
@@ -917,6 +976,7 @@ const keys = [
     code: 'AltRight',
     keyCode: 18,
     isSymbol: false,
+    isLetter: false,
     value: 'Alt',
     classNames: ['key', 'key_alt'],
   },
@@ -926,6 +986,7 @@ const keys = [
     code: 'ControlRight',
     keyCode: 17,
     isSymbol: false,
+    isLetter: false,
     value: 'Ctrl',
     classNames: ['key', 'key_ctrl'],
   },
@@ -935,6 +996,7 @@ const keys = [
     code: 'ArrowLeft',
     keyCode: 37,
     isSymbol: false,
+    isLetter: false,
     value: '⬅',
     classNames: ['key'],
   },
@@ -944,6 +1006,7 @@ const keys = [
     code: 'ArrowDown',
     keyCode: 40,
     isSymbol: false,
+    isLetter: false,
     value: '⬇',
     classNames: ['key'],
   },
@@ -953,6 +1016,7 @@ const keys = [
     code: 'ArrowRight',
     keyCode: 39,
     isSymbol: false,
+    isLetter: false,
     value: '⮕',
     classNames: ['key'],
   },
