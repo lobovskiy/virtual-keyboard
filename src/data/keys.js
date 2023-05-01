@@ -967,7 +967,7 @@ const keys = [
     keyCode: 32,
     isSymbol: true,
     isLetter: false,
-    value: '',
+    value: ' ',
     classNames: ['key', 'key_space'],
   },
   {
