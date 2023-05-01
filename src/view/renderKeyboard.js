@@ -1,4 +1,5 @@
 import getKeyboard from '../controllers/keyboard';
+import { getLangDiv } from '../controllers/language';
 
 function renderKeyboard(container) {
   const keyboard = getKeyboard();
@@ -21,6 +22,10 @@ function renderKeyboard(container) {
     currentRowKeysSortedArr.forEach((key) => {
       row.append(key.DOMElement);
     });
+
+    if (index === 3) {
+      row.append(getLangDiv());
+    }
 
     keyboardDiv.append(row);
   });

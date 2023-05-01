@@ -917,7 +917,7 @@ const keys = [
     keyCode: 16,
     isSymbol: false,
     isLetter: false,
-    value: 'Shift',
+    value: '⇧',
     classNames: ['key', 'key_shift-right'],
   },
   {

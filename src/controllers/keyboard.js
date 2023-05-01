@@ -1,5 +1,10 @@
 import keys from '../data/keys';
-import { getLanguage } from './language';
+import {
+  LANGUAGES,
+  getLanguage,
+  initLanguage,
+  toggleLanguage,
+} from './language';
 import renderKey from '../view/renderKey';
 import soundPressButton from '../assets/sound/press-button.mp3';
 import soundReleaseButton from '../assets/sound/release-button.mp3';
@@ -42,7 +47,11 @@ class Keyboard {
     let label = '';
 
     const isUppercase =
-      (!key.isLetter && this.pressedControls.shift) ||
+      (!key.isLetter &&
+        (this.pressedControls.shift ||
+          (key.code === 'Backquote' &&
+            language === LANGUAGES.RU &&
+            this.upperCase))) ||
       (key.isLetter && (this.pressedControls.shift || this.upperCase));
 
     if (typeof value === 'string') {
@@ -140,6 +149,13 @@ class Keyboard {
     };
   }
 
+  setAltPressed(value) {
+    this.pressedControls = {
+      ...this.pressedControls,
+      alt: value,
+    };
+  }
+
   setUppercase() {
     this.upperCase = !this.upperCase;
   }
@@ -154,6 +170,10 @@ class Keyboard {
 
     if (code === 'ControlLeft' || code === 'ControlRight') {
       this.setCtrlPressed(pressed);
+    }
+
+    if (code === 'AltLeft' || code === 'AltRight') {
+      this.setAltPressed(pressed);
     }
 
     if (code === 'CapsLock' && pressed) {
@@ -206,6 +226,14 @@ class Keyboard {
         moveCursor(TEXTAREA_DIRECTIONS.DOWN);
       }
     }
+
+    this.checkShortCuts();
+  }
+
+  checkShortCuts() {
+    if (this.pressedControls.alt && this.pressedControls.shift) {
+      toggleLanguage();
+    }
   }
 
   getRow(number) {
@@ -239,10 +267,15 @@ class Keyboard {
       .filter((key) => this[key].isLetter)
       .map((key) => this[key]);
 
+    if (getLanguage() === LANGUAGES.RU) {
+      letterKeysArr.push(this.Backquote);
+    }
+
     return letterKeysArr;
   }
 }
 
+initLanguage();
 const keyboard = new Keyboard(keys);
 
 function getKeyboard() {

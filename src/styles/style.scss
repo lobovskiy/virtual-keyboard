@@ -80,7 +80,7 @@ body {
   }
 
   &_shift-right {
-    width: 120px;
+    width: 60px;
   }
 
   &_ctrl {
@@ -103,4 +103,12 @@ body {
     filter: drop-shadow(0 0 5px #ff7aff);
     color: #ffcdff;
   }
+}
+
+.lang {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 43px;
+  margin: 5px;
 }
