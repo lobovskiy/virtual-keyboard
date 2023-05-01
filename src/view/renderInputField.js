@@ -1,4 +1,4 @@
-let inputField;
+let inputField = document.createElement('textarea');
 
 function renderInputField(container) {
   const inputDiv = document.createElement('div');
@@ -31,5 +31,16 @@ function getInputField() {
   return inputField;
 }
 
+function typeSymbol(symbol) {
+  const start = inputField.selectionStart;
+  const end = inputField.selectionEnd;
+  const text = inputField.value;
+  const before = text.substring(0, start);
+  const after = text.substring(end, text.length);
+  inputField.value = before + symbol + after;
+  inputField.selectionStart = start + symbol.length;
+  inputField.selectionEnd = start + symbol.length;
+}
+
 export default renderInputField;
-export { getInputField };
+export { getInputField, typeSymbol };

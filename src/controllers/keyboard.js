@@ -3,6 +3,7 @@ import { getLanguage } from './language';
 import renderKey from '../view/renderKey';
 import soundPressButton from '../assets/sound/press-button.mp3';
 import soundReleaseButton from '../assets/sound/release-button.mp3';
+import { typeSymbol } from '../view/renderInputField';
 
 class Keyboard {
   constructor(keysArray = []) {
@@ -69,12 +70,20 @@ class Keyboard {
     this.releaseKey(key.code);
   }
 
-  pressKey(key) {
+  pressKey(key, physicalKeyboardEvent) {
     this[key].soundPressButton.pause();
     this[key].soundPressButton.play();
     this[key].DOMElement.setAttribute('data-pressed', '');
 
-    if (!this[key].isSymbol) {
+    if (this[key].isSymbol) {
+      if (physicalKeyboardEvent) {
+        physicalKeyboardEvent.preventDefault();
+      }
+
+      const symbol = this.getKeyLabel(this[key]);
+
+      typeSymbol(symbol);
+    } else {
       this.updatePressedControls(this[key], true);
     }
   }
@@ -133,6 +142,14 @@ class Keyboard {
     if (code === 'CapsLock' && value) {
       this.setUppercase();
       this.updateLetters();
+    }
+
+    if (code === 'Enter' && value) {
+      typeSymbol('\r\n');
+    }
+
+    if (code === 'Tab' && value) {
+      typeSymbol('\t');
     }
   }
 

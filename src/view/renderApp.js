@@ -9,7 +9,12 @@ function renderApp() {
   renderKeyboard(body);
 
   const keyboard = getKeyboard();
-  body.addEventListener('keydown', (e) => keyboard.pressKey(e.code));
+  body.addEventListener('keydown', (e) => {
+    if (e.code === 'Tab') {
+      e.preventDefault();
+    }
+    keyboard.pressKey(e.code, e);
+  });
   body.addEventListener('keyup', (e) => keyboard.releaseKey(e.code));
 }
 
