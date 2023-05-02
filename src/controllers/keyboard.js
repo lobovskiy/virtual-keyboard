@@ -90,7 +90,7 @@ class Keyboard {
   }
 
   pressKey(key, physicalKeyboardEvent) {
-    if (this[key].soundPressButton) {
+    if (this[key]?.soundPressButton) {
       this[key].soundPressButton.play();
     }
     this[key].DOMElement.setAttribute('data-pressed', '');
@@ -109,7 +109,7 @@ class Keyboard {
   }
 
   releaseKey(key) {
-    if (this[key].soundReleaseButton) {
+    if (this[key]?.soundReleaseButton) {
       this[key].soundReleaseButton.play();
     }
     this[key].DOMElement.removeAttribute('data-pressed');
