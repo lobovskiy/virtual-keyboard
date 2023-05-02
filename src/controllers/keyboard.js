@@ -102,8 +102,15 @@ class Keyboard {
 
   pressKey(key, physicalKeyboardEvent) {
     if (this[key]) {
-      if (this[key]?.soundPressButton) {
-        this[key].soundPressButton.play();
+      const resp = this[key].soundPressButton.play();
+      if (resp !== undefined) {
+        resp
+          .then(() => {
+            // autoplay starts
+          })
+          .catch(() => {
+            // workaround to remove Google Autoplay Policy error
+          });
       }
       this[key].DOMElement.setAttribute('data-pressed', '');
 
@@ -123,8 +130,15 @@ class Keyboard {
 
   releaseKey(key) {
     if (this[key]) {
-      if (this[key]?.soundReleaseButton) {
-        this[key].soundReleaseButton.play();
+      const resp = this[key].soundReleaseButton.play();
+      if (resp !== undefined) {
+        resp
+          .then(() => {
+            // autoplay starts
+          })
+          .catch(() => {
+            // workaround to remove Google Autoplay Policy error
+          });
       }
       this[key].DOMElement.removeAttribute('data-pressed');
 
