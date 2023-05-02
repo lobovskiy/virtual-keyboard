@@ -90,32 +90,36 @@ class Keyboard {
   }
 
   pressKey(key, physicalKeyboardEvent) {
-    if (this[key]?.soundPressButton) {
-      this[key].soundPressButton.play();
-    }
-    this[key].DOMElement.setAttribute('data-pressed', '');
-
-    if (this[key].isSymbol && !this.pressedControls.ctrl) {
-      if (physicalKeyboardEvent) {
-        physicalKeyboardEvent.preventDefault();
+    if (this[key]) {
+      if (this[key]?.soundPressButton) {
+        this[key].soundPressButton.play();
       }
+      this[key].DOMElement.setAttribute('data-pressed', '');
 
-      const symbol = this.getKeyLabel(this[key]);
+      if (this[key].isSymbol && !this.pressedControls.ctrl) {
+        if (physicalKeyboardEvent) {
+          physicalKeyboardEvent.preventDefault();
+        }
 
-      typeSymbol(symbol);
-    } else {
-      this.checkControls(this[key], physicalKeyboardEvent, true);
+        const symbol = this.getKeyLabel(this[key]);
+
+        typeSymbol(symbol);
+      } else {
+        this.checkControls(this[key], physicalKeyboardEvent, true);
+      }
     }
   }
 
   releaseKey(key) {
-    if (this[key]?.soundReleaseButton) {
-      this[key].soundReleaseButton.play();
-    }
-    this[key].DOMElement.removeAttribute('data-pressed');
+    if (this[key]) {
+      if (this[key]?.soundReleaseButton) {
+        this[key].soundReleaseButton.play();
+      }
+      this[key].DOMElement.removeAttribute('data-pressed');
 
-    if (!this[key].isSymbol) {
-      this.checkControls(this[key]);
+      if (!this[key].isSymbol) {
+        this.checkControls(this[key]);
+      }
     }
   }
 
