@@ -46,7 +46,15 @@ class Keyboard {
 
     const isUppercase =
       (!key.isLetter &&
-        (this.pressedControls.shift ||
+        ((this.pressedControls.shift &&
+          key.code !== 'Backquote' &&
+          key.code !== 'BracketLeft' &&
+          key.code !== 'BracketRight' &&
+          key.code !== 'Semicolon' &&
+          key.code !== 'Quote' &&
+          key.code !== 'Comma' &&
+          key.code !== 'Period') ||
+          (this.pressedControls.shift && language !== LANGUAGES.RU) ||
           ((key.code === 'Backquote' ||
             key.code === 'BracketLeft' ||
             key.code === 'BracketRight' ||
@@ -55,8 +63,11 @@ class Keyboard {
             key.code === 'Comma' ||
             key.code === 'Period') &&
             language === LANGUAGES.RU &&
-            this.upperCase))) ||
-      (key.isLetter && (this.pressedControls.shift || this.upperCase));
+            ((this.pressedControls.shift && !this.upperCase) ||
+              (!this.pressedControls.shift && this.upperCase))))) ||
+      (key.isLetter &&
+        ((this.pressedControls.shift && !this.upperCase) ||
+          (!this.pressedControls.shift && this.upperCase)));
 
     if (typeof value === 'string') {
       label = value;
