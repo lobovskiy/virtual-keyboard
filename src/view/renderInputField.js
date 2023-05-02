@@ -156,7 +156,9 @@ function moveCursor(direction) {
 
   switch (direction) {
     case TEXTAREA_DIRECTIONS.LEFT:
-      inputField.setSelectionRange(start - 1, start - 1);
+      if (start) {
+        inputField.setSelectionRange(start - 1, start - 1);
+      }
 
       break;
     case TEXTAREA_DIRECTIONS.RIGHT:
