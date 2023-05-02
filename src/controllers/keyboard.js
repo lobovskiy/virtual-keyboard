@@ -34,9 +34,7 @@ class Keyboard {
       keyElement.addEventListener('mousedown', (e) =>
         this.pressMouseOnKey(e, key),
       );
-      keyElement.addEventListener('mouseup', (e) =>
-        this.releaseMouseFromKey(e, key),
-      );
+      keyElement.addEventListener('mouseup', () => this.releaseAllKeys());
       this[key.code].DOMElement = keyElement;
     });
   }
@@ -119,6 +117,17 @@ class Keyboard {
     if (!this[key].isSymbol) {
       this.checkControls(this[key]);
     }
+  }
+
+  releaseAllKeys() {
+    Object.keys(this).forEach((key) => {
+      if (
+        this[key]?.code &&
+        this[key]?.DOMElement.hasAttribute('data-pressed')
+      ) {
+        this.releaseKey(key);
+      }
+    });
   }
 
   updateSymbols() {

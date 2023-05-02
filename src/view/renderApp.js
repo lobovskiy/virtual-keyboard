@@ -20,6 +20,7 @@ function renderApp() {
     keyboard.pressKey(e.code, e);
   });
   body.addEventListener('keyup', (e) => keyboard.releaseKey(e.code));
+  body.addEventListener('mouseup', () => keyboard.releaseAllKeys());
 }
 
 export default renderApp;
