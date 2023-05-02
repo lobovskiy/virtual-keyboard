@@ -52,39 +52,37 @@ function typeSymbol(symbol) {
 }
 
 function removeSymbol(direction) {
-  if (inputField.selectionStart) {
-    const start = inputField.selectionStart;
-    const end = inputField.selectionEnd;
+  const start = inputField.selectionStart;
+  const end = inputField.selectionEnd;
 
-    if (inputField.selectionStart === inputField.selectionEnd) {
-      switch (direction) {
-        case TEXTAREA_DIRECTIONS.LEFT:
-          inputField.value =
-            inputField.value.substring(0, start - 1) +
-            inputField.value.substring(end, inputField.value.length);
+  if (inputField.selectionStart === inputField.selectionEnd) {
+    switch (direction) {
+      case TEXTAREA_DIRECTIONS.LEFT:
+        inputField.value =
+          inputField.value.substring(0, start - 1) +
+          inputField.value.substring(end, inputField.value.length);
 
-          inputField.setSelectionRange(start - 1, start - 1);
+        inputField.setSelectionRange(start - 1, start - 1);
 
-          break;
-        case TEXTAREA_DIRECTIONS.RIGHT:
-          inputField.value =
-            inputField.value.substring(0, start) +
-            inputField.value.substring(end + 1, inputField.value.length);
+        break;
+      case TEXTAREA_DIRECTIONS.RIGHT:
+        inputField.value =
+          inputField.value.substring(0, start) +
+          inputField.value.substring(end + 1, inputField.value.length);
 
-          inputField.setSelectionRange(start, start);
+        inputField.setSelectionRange(start, start);
 
-          break;
+        break;
 
-        default:
-          break;
-      }
-    } else {
-      inputField.value =
-        inputField.value.substring(0, start) +
-        inputField.value.substring(end, inputField.value.length);
-
-      inputField.setSelectionRange(start, start);
+      default:
+        break;
     }
+  } else {
+    inputField.value =
+      inputField.value.substring(0, start) +
+      inputField.value.substring(end, inputField.value.length);
+
+    inputField.setSelectionRange(start, start);
   }
 }
 
