@@ -86,8 +86,9 @@ class Keyboard {
   }
 
   pressKey(key, physicalKeyboardEvent) {
-    this[key].soundPressButton.pause();
-    this[key].soundPressButton.play();
+    if (this[key].soundPressButton) {
+      this[key].soundPressButton.play();
+    }
     this[key].DOMElement.setAttribute('data-pressed', '');
 
     if (this[key].isSymbol && !this.pressedControls.ctrl) {
@@ -104,8 +105,9 @@ class Keyboard {
   }
 
   releaseKey(key) {
-    this[key].soundReleaseButton.pause();
-    this[key].soundReleaseButton.play();
+    if (this[key].soundReleaseButton) {
+      this[key].soundReleaseButton.play();
+    }
     this[key].DOMElement.removeAttribute('data-pressed');
 
     if (!this[key].isSymbol) {
