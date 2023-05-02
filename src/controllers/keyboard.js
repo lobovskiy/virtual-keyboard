@@ -49,7 +49,13 @@ class Keyboard {
     const isUppercase =
       (!key.isLetter &&
         (this.pressedControls.shift ||
-          (key.code === 'Backquote' &&
+          ((key.code === 'Backquote' ||
+            key.code === 'BracketLeft' ||
+            key.code === 'BracketRight' ||
+            key.code === 'Semicolon' ||
+            key.code === 'Quote' ||
+            key.code === 'Comma' ||
+            key.code === 'Period') &&
             language === LANGUAGES.RU &&
             this.upperCase))) ||
       (key.isLetter && (this.pressedControls.shift || this.upperCase));
@@ -271,6 +277,12 @@ class Keyboard {
 
     if (getLanguage() === LANGUAGES.RU) {
       letterKeysArr.push(this.Backquote);
+      letterKeysArr.push(this.BracketLeft);
+      letterKeysArr.push(this.BracketRight);
+      letterKeysArr.push(this.Semicolon);
+      letterKeysArr.push(this.Quote);
+      letterKeysArr.push(this.Comma);
+      letterKeysArr.push(this.Period);
     }
 
     return letterKeysArr;
